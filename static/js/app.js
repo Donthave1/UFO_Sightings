@@ -5,6 +5,17 @@ let noResult = noData;
 let button = d3.select("#filter-btn");
 // Getting a reference to the input element on the page with the id property set to 'input-field'
 let inputField = d3.select("#datetime");
+// Display full table first
+tableData.forEach((tData) => {
+    // Get a reference to the table body
+    let tbody = d3.select("tbody");
+    let row = tbody.append("tr");
+    Object.entries(tData).forEach(([key, value]) => {
+        let cell = tbody.append("td");
+        cell.text(value);
+    });
+});
+
 
 // This function is triggered when the button is clicked
 button.on("click", function() {
@@ -42,14 +53,3 @@ button.on("click", function() {
         });
     }
 });
-
-
-// // Setting up all variable array
-// var datetime = tableData.map(sight => sight.datetime);
-// var city = tableData.map(sight => sight.city);
-// var state = tableData.map(sight => sight.state);
-// var country = tableData.map(sight => sight.country);
-// var shape = tableData.map(sight => sight.shape);
-// var durationMinutes = tableData.map(sight => sight.durationMinutes);
-// var comments = tableData.map(sight => sight.comments);
-
