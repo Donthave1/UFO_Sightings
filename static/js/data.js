@@ -1,13 +1,3 @@
-let noData = {
-  datetime: "N/A",
-  city: "N/A",
-  state: "N/A",
-  country: "N/A",
-  shape: "N/A",
-  durationMinutes: "N/A",
-  comments: "NO EVENT IN GIVEN DATE."
-}
-
 var data = [{
     datetime: "1/1/2010",
     city: "benton",
