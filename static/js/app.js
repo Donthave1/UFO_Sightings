@@ -27,11 +27,11 @@ filterButton.on("click", function() {
 
     /// Get references to  input field
     let dateInput = d3.select("#dateInput").property("value");
-    let cityInput = d3.select("#cityInput").property("value");
-    let stateInput = d3.select("#stateInput").property("value");
-    let countryInput = d3.select("#countryInput").property("value");
-    let shapeInput = d3.select("#shapeInput").property("value");
-    d3.select(".form-control").node().value = "";
+    let cityInput = d3.select("#cityList").property("value");
+    let stateInput = d3.select("#stateList").property("value");
+    let countryInput = d3.select("#countryList").property("value");
+    let shapeInput = d3.select("#shapeList").property("value");
+
     //  Reset the data
     let filteredData = tableData;
     //  Filter through multiple inputs
@@ -55,7 +55,7 @@ filterButton.on("click", function() {
     let newTable = d3.select("tbody").remove();
     newTable = d3.select("table").append("tbody");
     buildTable(filteredData);
-});
+}); 
 
 // Execute when click reset button
 let reset = d3.select("#clear-btn");
@@ -71,3 +71,67 @@ reset.on("click",function() {
 
 // Render the table for the first time on page load
 buildTable(tableData);
+
+// Render City Dropdown list
+let cities = tableData.map(city => city.city.toUpperCase());
+let cleanCity = ["City"];
+for(city of cities) {
+    if (!cleanCity.includes(city)) {
+        cleanCity.push(city);
+    };
+};
+
+let cityDropdown = d3.select("#cityList").selectAll("option").remove();
+cleanCity.forEach((city) => {
+    let selection = d3.select("#cityList");
+    let option = selection.append("option");
+    option.text(city);
+});
+    
+// Render State Dropdown list
+let states = tableData.map(state => state.state.toUpperCase());
+let cleanState = ["State"];
+for(state of states) {
+    if (!cleanState.includes(state)) {
+        cleanState.push(state);
+    };
+};
+
+let stateDropdown = d3.select("#stateList").selectAll("option").remove();
+cleanState.forEach((state) => {
+    let selection = d3.select("#stateList");
+    let option = selection.append("option");
+    option.text(state);
+});
+
+// Render Country Dropdown list
+let countries = tableData.map(country => country.country.toUpperCase());
+let cleanCountry = ["Country"];
+for(country of countries) {
+    if (!cleanCountry.includes(country)) {
+        cleanCountry.push(country);
+    };
+};
+
+let countryDropdown = d3.select("#countryList").selectAll("option").remove();
+cleanCountry.forEach((country) => {
+    let selection = d3.select("#countryList");
+    let option = selection.append("option");
+    option.text(country);
+});
+
+// Render Shape Dropdown list
+let shapes = tableData.map(shape => shape.shape.toUpperCase());
+let cleanShape = ["Shape"];
+for(shape of shapes) {
+    if (!cleanShape.includes(shape)) {
+        cleanShape.push(shape);
+    };
+};
+
+let shapeDropdown = d3.select("#shapeList").selectAll("option").remove();
+cleanShape.forEach((shape) => {
+    let selection = d3.select("#shapeList");
+    let option = selection.append("option");
+    option.text(shape);
+});
