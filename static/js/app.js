@@ -73,7 +73,7 @@ reset.on("click",function() {
 buildTable(tableData);
 
 // Render City Dropdown list
-let cities = tableData.map(city => city.city.toUpperCase());
+let cities = tableData.map(city => city.city.toUpperCase()).sort();
 let cleanCity = [""];
 for(city of cities) {
     if (!cleanCity.includes(city)) {
@@ -89,7 +89,7 @@ cleanCity.forEach((city) => {
 });
     
 // Render State Dropdown list
-let states = tableData.map(state => state.state.toUpperCase());
+let states = tableData.map(state => state.state.toUpperCase()).sort();
 let cleanState = [""];
 for(state of states) {
     if (!cleanState.includes(state)) {
@@ -105,7 +105,7 @@ cleanState.forEach((state) => {
 });
 
 // Render Country Dropdown list
-let countries = tableData.map(country => country.country.toUpperCase());
+let countries = tableData.map(country => country.country.toUpperCase()).sort();
 let cleanCountry = [""];
 for(country of countries) {
     if (!cleanCountry.includes(country)) {
@@ -121,7 +121,7 @@ cleanCountry.forEach((country) => {
 });
 
 // Render Shape Dropdown list
-let shapes = tableData.map(shape => shape.shape.toUpperCase());
+let shapes = tableData.map(shape => shape.shape.toUpperCase()).sort();
 let cleanShape = [""];
 for(shape of shapes) {
     if (!cleanShape.includes(shape)) {
